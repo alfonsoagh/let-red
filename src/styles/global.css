@@ -1,0 +1,212 @@
+/* Reset simple */
+*{box-sizing: border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  font-family: var(--font-secondary);
+  color: var(--brand-black);
+  background: var(--white);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* Header */
+.header{
+  background: linear-gradient(90deg, rgba(251,0,9,0.05), rgba(224,0,8,0.02));
+  border-bottom: 1px solid var(--gray-200);
+  position: sticky;
+  top:0;
+  z-index:100;
+}
+
+/* Navbar */
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 12px 0;
+}
+.logo img{height:44px}
+
+/* Nav links */
+.nav-menu{display:flex;gap:20px;align-items:center}
+.nav-link{color:var(--brand-black);text-decoration:none;font-weight:600}
+.cta{
+  background:var(--brand-red);
+  color:var(--white);
+  padding:8px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* Hero */
+.hero{
+  display:flex;
+  align-items:center;
+  padding:60px 0;
+  gap:36px;
+}
+.hero-left{flex:1}
+.hero-right{flex:1}
+.hero h1{
+  font-family: var(--font-primary);
+  color:var(--brand-black);
+  font-size:44px;
+  margin:0 0 12px 0;
+}
+.hero p{margin:0 0 18px 0;color:#333}
+
+/* Cards grid */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+/* PromoCard */
+.promo{
+  background:var(--white);
+  border-radius:10px;
+  box-shadow: 0 6px 18px rgba(20,20,20,0.06);
+  overflow:hidden;
+}
+.promo img{width:100%;height:180px;object-fit:cover}
+.promo .body{padding:12px}
+.price{color:var(--brand-red);font-weight:800}
+
+/* Footer */
+.footer{
+  background:var(--brand-black);
+  color:var(--white);
+  padding:32px 0;
+}
+.footer a{color:var(--white);text-decoration:none}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero{flex-direction:column;padding:36px 0}
+  .logo img{height:36px}
+  .nav-menu{display:none}
+}
+
+
+/* ====== Layout de página con sidebar ====== */
+/* Contenedor de 2 columnas: sidebar + contenido */
+.page-with-side {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* En móvil, sidebar como drawer */
+@media (max-width: 992px){
+  .page-with-side{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ====== Toggle móvil ====== */
+.sl-toggle{
+  display: none;
+  position: sticky;
+  top: 64px; /* ajusta a tu navbar */
+  margin: 8px 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line, #e5e7eb);
+  background: #fff;
+  font-size: 14px;
+}
+@media (max-width: 992px){
+  .sl-toggle{ display: inline-block; }
+}
+
+/* ====== Sidebar ====== */
+.sl-nav{
+  position: sticky;
+  top: 96px; /* navbar + respiro */
+  align-self: start;
+  max-height: calc(100vh - 120px);
+  overflow: auto;
+  border: 1px solid var(--line, #e5e7eb);
+  border-radius: 16px;
+  background: #fff;
+}
+
+/* Drawer móvil */
+@media (max-width: 992px){
+  .sl-nav{
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    border-radius: 0;
+    z-index: 70;
+  }
+  html.sl-nav-open .sl-nav{
+    transform: translateX(0);
+  }
+  .sl-backdrop{
+    content: "";
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.28);
+    opacity: 0; pointer-events: none;
+    transition: opacity .2s ease;
+    z-index: 60;
+  }
+  html.sl-nav-open .sl-backdrop{
+    opacity: 1; pointer-events: auto;
+  }
+}
+
+.sl-nav__inner{
+  padding: 16px;
+}
+
+.sl-nav__title{
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--muted, #4b5563);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+
+/* Lista */
+.sl-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+/* Links */
+.sl-link{
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--ink, #141414);
+  background: transparent;
+  transition: background .15s ease, color .15s ease;
+}
+.sl-link:hover{ background: var(--let-gray-100, #f7f7f7); }
+
+/* Activo */
+.sl-link.is-active{
+  background: var(--let-gray-200, #ebebeb);
+  font-weight: 600;
+  outline: 2px solid transparent; /* accesibilidad sin halo raro */
+}
+
+/* Scrollbar sutil */
+.sl-nav::-webkit-scrollbar{ width: 10px; }
+.sl-nav::-webkit-scrollbar-thumb{
+  background: #dedede; border-radius: 999px;
+}

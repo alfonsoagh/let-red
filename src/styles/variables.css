@@ -1,0 +1,27 @@
+:root{
+  /* Paleta según Manual de Identidad */
+  --brand-red: #F10009;
+  --brand-red-2: #E00008;
+  --brand-red-3: #BD0007;
+  --brand-black: #141414;
+  --black: #000000;
+  --white: #ffffff;
+  --gray-100: #F7F7F7;
+  --gray-200: #EBEBEB;
+  --gray-300: #E3E3E3;
+
+  /* Tipografías (si las subes a public/fonts, importa en global.css) */
+  --font-primary: 'Barlow', 'Arial', sans-serif;
+  --font-secondary: 'Montserrat', 'Arial', sans-serif;
+
+  --container-width: 1200px;
+  --gutter: 24px;
+}
+
+/* Utility */
+.container{
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
