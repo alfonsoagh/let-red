@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 export function CarouselHero({
   slides = [],
   interval = 6000,
+  parallax = 12, // ✅ NUEVO: intensidad del parallax (false para desactivar)
 }) {
   const [idx, setIdx] = useState(0);
   const [progress, setProgress] = useState(0); // 0..100
@@ -56,11 +57,20 @@ export function CarouselHero({
     >
       <div className="hero-carousel__viewport">
         {slides.map((s, i) => (
-          <Slide key={i} slide={s} active={i === idx} aria-hidden={i !== idx} />
+          <Slide
+            key={i}
+            slide={s}
+            active={i === idx}
+            aria-hidden={i !== idx}
+            // ✅ Pasamos la intensidad para que la <img> le ponga data-parallax
+            parallax={parallax}
+            // Mejora de carga: el primer slide eager, los demás lazy
+            loading={i === 0 ? "eager" : "lazy"}
+          />
         ))}
       </div>
 
-      {/* solo tabs con barra de progreso */}
+      {/* Tabs con barra de progreso */}
       {count > 1 && (
         <div className="hero-tabs" role="tablist" aria-label="Paginación del carrusel">
           {slides.map((s, i) => {
@@ -92,8 +102,9 @@ export function CarouselHero({
   );
 }
 
-function Slide({ slide, active, ...a11y }) {
+function Slide({ slide, active, parallax, loading = "lazy", ...a11y }) {
   const { kind = "hero", title, subtitle, image, badge, primary, secondary, link, date } = slide || {};
+
   return (
     <article
       id={a11y["aria-hidden"] ? undefined : `hero-slide-active`}
@@ -102,7 +113,17 @@ function Slide({ slide, active, ...a11y }) {
     >
       {image && (
         <div className="hero-slide__bg" aria-hidden="true">
-          <img src={image} alt="" />
+          {/* ✅ Aquí está el cambio: aplicamos data-parallax si está activado */}
+          <img
+            src={image}
+            alt=""
+            loading={loading}
+            decoding="async"
+            // si parallax es número, lo seteamos; si es false, no agregamos el atributo
+            {...(typeof parallax === "number" && parallax !== 0
+              ? { "data-parallax": String(parallax), style: { willChange: "transform" } }
+              : {})}
+          />
           <div className="hero-slide__overlay" />
         </div>
       )}

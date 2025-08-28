@@ -1,0 +1,39 @@
+/* Reveal base */
+.reveal{ opacity:0; transform: translateY(8px); transition: transform .6s cubic-bezier(.2,.9,.2,1), opacity .6s ease }
+.reveal.is-in{ opacity:1; transform: none }
+
+
+/* Variantes */
+.reveal-up{ transform: translateY(16px) }
+.reveal-down{ transform: translateY(-16px) }
+.reveal-left{ transform: translateX(24px) }
+.reveal-right{ transform: translateX(-24px) }
+.reveal-zoom{ transform: scale(.96); transform-origin: center }
+.reveal-blur{ filter: blur(6px) }
+.reveal-blur.is-in{ filter: blur(0) }
+
+
+/* Stagger para grids: aplica a hijos */
+.reveal-stagger>*{ opacity:0; transform: translateY(10px) }
+.reveal-stagger.is-in>*{ opacity:1; transform:none }
+.reveal-stagger.is-in>*{ transition: transform .6s cubic-bezier(.2,.9,.2,1), opacity .6s ease }
+.reveal-stagger.is-in>*:nth-child(1){ transition-delay: .02s }
+.reveal-stagger.is-in>*:nth-child(2){ transition-delay: .08s }
+.reveal-stagger.is-in>*:nth-child(3){ transition-delay: .14s }
+.reveal-stagger.is-in>*:nth-child(4){ transition-delay: .20s }
+.reveal-stagger.is-in>*:nth-child(5){ transition-delay: .26s }
+
+
+/* Hover microinteractions para Card */
+.card{ transition: transform .25s ease, box-shadow .25s ease }
+.card:hover{ transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,.08) }
+
+
+/* Métricas: estilo del número */
+.metric-value{ font-variant-numeric: tabular-nums; letter-spacing: .5px }
+
+
+/* Respeta reduce motion */
+@media (prefers-reduced-motion: reduce){
+.reveal, .reveal-stagger>*{ transition: none !important; transform:none !important; opacity:1 !important }
+}
