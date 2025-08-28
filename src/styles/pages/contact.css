@@ -1,0 +1,36 @@
+/* ===== Contacto: layout y aside ===== */
+.contact-grid{
+  display:grid; gap:24px; grid-template-columns:1fr; align-items:start;
+}
+@media (min-width:980px){ .contact-grid{ grid-template-columns:minmax(0,1fr) 420px } }
+@media (min-width:1280px){ .contact-grid{ grid-template-columns:1.4fr .9fr } }
+
+.contact-aside{ display:grid; gap:16px; align-content:start }
+.contact-aside .card{ min-height:0 }
+
+.contact-list{
+  list-style:none; margin:0; padding:0; display:grid; gap:8px;
+}
+.contact-list li{
+  display:flex; gap:8px; align-items:center; word-break:break-word;
+}
+.contact-list a{ color:inherit; text-decoration:none }
+.contact-list a:hover{ text-decoration:underline }
+
+/* Encabezado del form */
+.form-hero{
+  border-bottom:1px solid var(--line);
+  padding:16px 16px 12px; margin:-16px -16px 12px;
+  background:linear-gradient(180deg,#fff,#fffaf9);
+}
+.form-hero__body h3{ margin:0 0 6px }
+.form-hero__body p{ margin:0; color:var(--muted) }
+
+/* Grid del formulario */
+.form-modern .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px }
+.form-modern .input-group--full{ grid-column:1 / -1 }
+@media (max-width:720px){ .form-modern .form-row{ grid-template-columns:1fr } }
+
+/* Acciones */
+.form-actions{ display:grid; gap:12px; align-items:center }
+.form-buttons{ display:flex; flex-wrap:wrap; gap:12px }

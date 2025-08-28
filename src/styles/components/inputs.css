@@ -1,0 +1,44 @@
+/* Inputs base */
+.input{
+  width:100%;
+  padding:.6rem .8rem;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  transition:border-color .15s ease, box-shadow .15s ease, background-color .2s;
+}
+.input:focus{
+  outline:none;
+  border-color:var(--let-red-600);
+  box-shadow:0 0 0 3px rgba(251,0,9,.12);
+}
+.label{ display:block; font-size:.9rem; font-weight:600 }
+
+/* Estados */
+[aria-invalid="true"].input,
+.input[aria-invalid="true"]{
+  border-color:#ef4444;
+  box-shadow:0 0 0 3px rgba(239,68,68,.12);
+}
+.field-msg{ margin:6px 0 0; font-size:12px; color:#b91c1c }
+
+/* Leading icon + tamaños */
+.input-wrap{ position:relative }
+.input-leading{
+  position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  pointer-events:none; opacity:.8;
+}
+.input-wrap--textarea .input-leading{ top:16px; transform:none }
+.input--lg{ padding:.8rem 1rem .8rem 38px; border-radius:12px }
+
+/* Checkbox simple */
+.check{ display:inline-flex; gap:8px; align-items:center; font-size:14px; color:var(--muted) }
+.check input{ transform:translateY(1px) }
+
+/* Alert */
+.alert{
+  border:1px solid var(--line);
+  border-radius:12px; padding:10px 12px;
+  font-size:14px; margin:8px 0 2px;
+}
+.alert--success{ background:#f0fdf4; border-color:#bbf7d0; color:#15803d }

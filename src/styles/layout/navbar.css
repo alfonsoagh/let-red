@@ -1,0 +1,67 @@
+/* =========================
+   NAVBAR + MENÚ RESPONSIVE
+========================= */
+.nav{ display:none; gap:22px; align-items:center; margin-left:8px }
+@media(min-width:900px){ .nav{ display:flex } }
+
+.nav a{
+  font-size:16.5px; font-weight:600;
+  color:#1f2937; text-decoration:none; line-height:1; padding:0 2px;
+}
+.nav a:hover{ color:var(--let-red-600) }
+.nav a[aria-current="page"]{ color:var(--let-red-600) }
+
+/* CTA dentro del nav */
+.nav .btn{ font-size:15.5px; padding:.72rem 1.1rem; border-radius:12px; font-weight:600 }
+
+/* Toggle hamburguesa */
+.nav-toggle{ background:transparent; border:0; padding:8px; cursor:pointer }
+@media(min-width:900px){ .nav-toggle{ display:none } }
+
+/* Barra sticky (fila interna) */
+.sticky > .container{
+  height:84px;
+  padding-left:24px; padding-right:24px;
+  display:flex; align-items:center; gap:16px; justify-content:flex-start;
+}
+
+/* Logo */
+.logo{ display:inline-flex; align-items:center; gap:8px }
+.logo img{ height:52px }
+.logo span{
+  font-size:18px; font-weight:700; letter-spacing:.01em; color:var(--let-gray-900);
+}
+
+/* Drawer móvil FULL-SCREEN */
+.nav-drawer{
+  position:fixed; inset:0; width:100vw; height:100vh; background:#fff;
+  transform:translateY(-100%); transition:transform .25s ease;
+  z-index:99999; display:flex; flex-direction:column; overflow:auto;
+}
+.nav-drawer.open{ transform:translateY(0) }
+
+.nav-drawer header{
+  position:sticky; top:0; background:#fff; z-index:1;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 16px; border-bottom:1px solid var(--line);
+}
+.nav-drawer nav{
+  display:flex; flex-direction:column; gap:4px; padding:16px;
+}
+.nav-drawer nav a:not(.btn){
+  padding:12px 10px; border-radius:10px; color:#374151; text-decoration:none; font-size:16px;
+}
+.nav-drawer nav a[aria-current="page"]:not(.btn){
+  background:#f3f4f6; color:var(--let-red-600); font-weight:600;
+}
+.nav-drawer .btn-full{ display:block; width:100%; text-align:center }
+.nav-drawer .btn.btn-primary{ color:#fff }
+
+.nav-overlay{
+  position:fixed; inset:0; background:rgba(0,0,0,.25);
+  opacity:0; pointer-events:none; transition:opacity .25s ease; z-index:99998;
+}
+.nav-overlay.open{ opacity:1; pointer-events:auto }
+
+/* asegúrate que nada “herede” centrado */
+.sticky, .sticky > .container, .nav{ text-align:left !important }

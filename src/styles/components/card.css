@@ -1,0 +1,8 @@
+.card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px;
+  background:#fff;
+}
+.card--elevated{ box-shadow: 0 6px 30px rgba(20,20,20,.06); }
+.card-title{ margin:0 0 8px }

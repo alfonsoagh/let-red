@@ -1,0 +1,36 @@
+/* =========================
+   BASE / RESET LIGERO
+========================= */
+*{ box-sizing:border-box }
+html,body,#root{ height:100% }
+body{
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+}
+img{ max-width:100%; display:block; height:auto }
+
+/* bloquea el scroll al abrir drawer móvil */
+body.nav-open{ overflow:hidden }
+
+/* Helpers de spacing y texto */
+.mt-1{ margin-top:.25rem } .mt-2{ margin-top:.5rem } .mt-3{ margin-top:.75rem }
+.mt-4{ margin-top:1rem } .mt-6{ margin-top:1.5rem }
+.mb-2{ margin-bottom:.5rem } .mb-3{ margin-bottom:.75rem } .mb-6{ margin-bottom:1.5rem }
+.text-sm{ font-size:14px } .text-muted{ color:var(--muted) }
+
+/* Grid helper */
+.grid-auto{ display:grid; grid-template-columns:1fr; gap:16px }
+@media (min-width:600px){ .grid-auto{ grid-template-columns:repeat(2,1fr) } }
+@media (min-width:900px){ .grid-auto{ grid-template-columns:repeat(3,1fr) } }
+
+/* Sticky genérico (navbar/headers) */
+.sticky{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  backdrop-filter:saturate(180%) blur(8px);
+  background:#fff;
+  border-bottom:1px solid var(--line);
+}

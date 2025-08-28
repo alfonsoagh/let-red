@@ -1,0 +1,27 @@
+/* Botones */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.6rem 1rem;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  color:var(--ink);
+  text-decoration:none;
+  cursor:pointer;
+  transition:.2s;
+}
+.btn:hover{ filter:brightness(.98) }
+
+.btn-primary{
+  background:var(--let-red);
+  border-color:var(--let-red);
+  color:#fff !important;
+}
+.btn-primary:hover{
+  background:var(--let-red-600);
+  border-color:var(--let-red-600);
+}
+.btn-ghost{ background:transparent }
+.btn-white{ background:#fff; color:var(--let-red-600) }
+.btn-outline-white{ border-color:#fff; color:#fff; background:transparent }
+.btn--xl{ padding:.85rem 1.2rem; border-radius:14px; font-weight:600 }

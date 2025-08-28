@@ -1,0 +1,70 @@
+:root{
+  --let-red:#FB0009;
+  --let-red-600:#E00008;
+  --ink:#141414;
+  --bg:#ffffff;
+}
+
+.let-loader{
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  z-index: 9999;
+  animation: letFadeOut 300ms ease var(--let-dur,1400ms) forwards;
+}
+
+.let-loader__center{
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  transform: translateZ(0);
+  animation: letLift 420ms ease-out forwards;
+}
+
+.let-logo{
+  width: min(360px, 64vw);
+  height: auto;
+  opacity: 0;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.06));
+  animation:
+    letLogoIn 420ms cubic-bezier(.2,.9,.2,1) forwards,
+    letGlow 1200ms ease-in-out 120ms infinite alternate;
+}
+
+/* Línea roja que barre de izq→der bajo el logo */
+.let-sweep{
+  position: relative;
+  width: min(380px, 70vw);
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0 10%, var(--let-red) 40%, var(--let-red-600) 60%, transparent 90% 100%);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.let-sweep::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent 0 5%, var(--let-red) 40%, var(--let-red-600) 60%, transparent 95% 100%);
+  animation: letSweep var(--let-dur,1400ms) cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+/* Keyframes */
+@keyframes letLogoIn{ to{ opacity:1; transform: translateY(0)} }
+@keyframes letLift{ from{ transform: translateY(4px); } to{ transform: translateY(0);} }
+@keyframes letSweep{ to{ transform: translateX(100%);} }
+@keyframes letGlow{
+  from{ filter: drop-shadow(0 6px 18px rgba(251,0,9,.08)); }
+  to  { filter: drop-shadow(0 8px 22px rgba(251,0,9,.18)); }
+}
+@keyframes letFadeOut{ to{ opacity:0; visibility:hidden } }
+
+/* Accesibilidad: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .let-logo, .let-sweep::before, .let-loader{ animation: none; }
+}
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}

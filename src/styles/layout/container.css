@@ -1,0 +1,4 @@
+/* Container + secciones base */
+.container{ max-width:1200px; margin:0 auto; padding:0 16px }
+.section{ padding:48px 0 }
+@media (min-width:900px){ .section{ padding:56px 0 } }

@@ -1,0 +1,15 @@
+/* =========================
+   VARIABLES (TOKENS)
+========================= */
+:root{
+  --let-red:#FB0009;
+  --let-red-600:#E00008;
+  --let-gray-900:#141414;
+  --let-gray-700:#1A1A1A;
+  --let-gray-100:#F7F7F7;
+  --let-gray-200:#EBEBEB;
+  --ink:#141414;
+  --muted:#4b5563;
+  --line:#e5e7eb;
+  --bg:#ffffff;
+}

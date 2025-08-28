@@ -1,0 +1,29 @@
+/* =========================
+   SUBNAV (chips horizontales)
+========================= */
+.subnav-sticky{ z-index:900 }
+.subnav--sticky{
+  position:sticky; top:64px; background:#fff; border-bottom:1px solid var(--line); z-index:50;
+}
+.subnav--fullbleed{
+  margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); width:100vw;
+}
+.subnav__container{ max-width:1100px; margin:0 auto; padding:8px 16px }
+.subnav__list{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:8px 16px;
+  list-style:none; padding:0; margin:0;
+}
+.subnav__link{
+  display:inline-block; padding:10px 14px; border-radius:999px;
+  font-size:14px; text-decoration:none; color:var(--ink);
+  background:var(--let-gray-100); transition:background .2s, transform .1s; white-space:nowrap;
+}
+.subnav__link:hover{ background:var(--let-gray-200) }
+.subnav__link:active{ transform:scale(.98) }
+
+@media (max-width:768px){
+  .subnav__container{ padding:8px 12px }
+  .subnav__list{ flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none }
+  .subnav__list::-webkit-scrollbar{ display:none }
+  .subnav__list > li{ flex:0 0 auto }
+}

@@ -1,0 +1,57 @@
+/* =========================
+   HERO (slider sin flechas)
+========================= */
+.hero{ background:linear-gradient(180deg,#fff5f5,#fff) }
+
+/* Full-bleed */
+.hero-carousel{
+  position:relative; overflow:hidden; background:#000;
+  width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+}
+.hero-carousel__viewport{
+  position:relative; width:100%;
+  height:75vh; min-height:420px; max-height:820px;
+}
+
+.hero-slide{
+  position:absolute; inset:0; opacity:0; transform:scale(.98);
+  transition:opacity .5s ease, transform .6s ease;
+  display:grid; place-items:stretch;
+}
+.hero-slide.is-active{ opacity:1; transform:scale(1); z-index:1 }
+
+.hero-slide__bg{ position:absolute; inset:0; overflow:hidden }
+.hero-slide__bg img{ width:100%; height:100%; object-fit:cover; object-position:center; filter:brightness(.9) }
+
+.hero-slide__overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.45) 40%, rgba(0,0,0,.55) 100%);
+}
+.hero-slide.is-news .hero-slide__overlay{
+  background:linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,.35) 100%);
+}
+
+.hero-slide__content{
+  position:relative; z-index:2; display:grid; align-content:center; gap:12px;
+  height:100%; padding:32px 16px; color:#fff;
+}
+.hero-title{ font-size:clamp(28px, 4.5vw, 50px); line-height:1.1; margin:0 0 12px }
+.hero-subtitle{ max-width:720px; font-size:clamp(15px,2vw,20px); color:#e8e8e8; margin:0 0 16px }
+.hero-ctas{ display:flex; gap:12px; flex-wrap:wrap }
+
+/* Tabs/indicadores */
+.hero-tabs{
+  position:absolute; left:0; right:0; bottom:0;
+  display:grid; grid-auto-flow:column; gap:8px; align-items:end;
+  padding:14px 16px; z-index:1001;
+}
+.hero-tab{ background:transparent; border:0; padding:0; cursor:pointer; display:grid; gap:6px; align-content:end; min-width:60px }
+.hero-tab__bar{ height:4px; border-radius:999px; background:rgba(255,255,255,.35); overflow:hidden; transform:translateZ(0) }
+.hero-tab__fill{ display:block; width:100%; height:100%; transform-origin:left center; transform:scaleX(0); background:#fff; transition:transform .12s linear }
+.hero-tab.is-active .hero-tab__bar{ background:rgba(255,255,255,.4) }
+.hero-tab__label{ color:rgba(255,255,255,.9); font-size:11px; line-height:1; justify-self:center; user-select:none }
+@media (max-width:640px){ .hero-tab{ min-width:44px } .hero-tab__label{ display:none } }
+
+/* Variante hero grid clásico */
+.hero-grid{ display:grid; gap:24px; align-items:center }
+@media(min-width:900px){ .hero-grid{ grid-template-columns:1.1fr .9fr } }
